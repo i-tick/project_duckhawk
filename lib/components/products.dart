@@ -1,6 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:project_duckhawk/pages/product_details.dart';
 
+  
+class products extends StatefulWidget {
+  final item;
+  var product_list;
+
+  products(this.item)
+  {
+    switch(this.item)
+    {
+      case 'fashion':
+        product_list = [
+          {
+            "name": "Men",
+            "picture": "images/Guide-mens-smart-casual-dress-code15@2x.png",
+          },
+          {
+            "name": "Watches",
+            "picture": "images/watches-111a.png",
+          },
+          {
+            "name": "Jeans",
+            "picture": "images/men-jeans@2x.png",
+          },
+
+        ];
+        break;
+      case 'electronics':
+        product_list = [
+          {
+            "name": "Sneakers",
+            "picture": "images/16x9.png",
+          },
+          {
+            "name": "Sun Glasses",
+            "picture": "images/pexels-photo-46710.png",
+          },
+        ];
+
+    }
+  }
+  @override
+  _ProductsState createState() => _ProductsState(product_list: this.product_list);
+}
+
+class _ProductsState extends State<products> {
+  final product_list;
+=======
+
 class products extends StatefulWidget {
   @override
   _ProductsState createState() => _ProductsState();
@@ -30,11 +78,14 @@ class _ProductsState extends State<products> {
     },
   ];
 
+  _ProductsState({this.product_list});
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
         itemCount: product_list.length,
         gridDelegate:
+
+            new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
             new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemBuilder: (BuildContext context, int index) {
           return Single_prod(
@@ -65,6 +116,7 @@ class Single_prod extends StatelessWidget {
                   builder: (context) => new ProductDetails(
                     product_name: prod_name,
                     product_picture: prod_pricture,
+
                   ))),
               child: GridTile(
                   footer: Container(
