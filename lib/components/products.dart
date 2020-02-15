@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_duckhawk/pages/product_details.dart';
 
+  
 class products extends StatefulWidget {
   final item;
   var product_list;
@@ -46,6 +47,36 @@ class products extends StatefulWidget {
 
 class _ProductsState extends State<products> {
   final product_list;
+=======
+
+class products extends StatefulWidget {
+  @override
+  _ProductsState createState() => _ProductsState();
+}
+
+class _ProductsState extends State<products> {
+  var product_list = [
+    {
+      "name": "Men",
+      "picture": "images/Guide-mens-smart-casual-dress-code15@2x.png",
+    },
+    {
+      "name": "Watches",
+      "picture": "images/watches-111a.png",
+    },
+    {
+      "name": "Jeans",
+      "picture": "images/men-jeans@2x.png",
+    },
+    {
+      "name": "Sneakers",
+      "picture": "images/16x9.png",
+    },
+    {
+      "name": "Sun Glasses",
+      "picture": "images/pexels-photo-46710.png",
+    },
+  ];
 
   _ProductsState({this.product_list});
   @override
@@ -53,7 +84,9 @@ class _ProductsState extends State<products> {
     return GridView.builder(
         itemCount: product_list.length,
         gridDelegate:
+
             new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+            new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemBuilder: (BuildContext context, int index) {
           return Single_prod(
             prod_name: product_list[index]['name'],
@@ -82,6 +115,8 @@ class Single_prod extends StatelessWidget {
               onTap: () => Navigator.of(context).push(new MaterialPageRoute(
                   builder: (context) => new ProductDetails(
                     product_name: prod_name,
+                    product_picture: prod_pricture,
+
                   ))),
               child: GridTile(
                   footer: Container(
