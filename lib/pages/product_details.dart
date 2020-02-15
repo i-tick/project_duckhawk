@@ -1,37 +1,84 @@
 import 'package:flutter/material.dart';
-import 'package:project_duckhawk/pages/product_details.dart';
+import 'package:project_duckhawk/pages/product_info.dart';
 
-class products extends StatefulWidget {
-  final item;
-  var product_list;
 
-  products(this.item)
+class ProductDetails extends StatefulWidget {
+  var product_name;
+  ProductDetails({
+    this.product_name,});
+
+  @override
+  _ProductDetailsState createState() => _ProductDetailsState(this.product_name);
+}
+
+class _ProductDetailsState extends State<ProductDetails> {
+  final p_name;
+
+  _ProductDetailsState(this.p_name);
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+      appBar: new AppBar(
+
+        backgroundColor: Color(0xff104670), //CHECK COLOR CODE
+        title: Text(widget.product_name),
+
+        actions: <Widget>[
+          new IconButton(
+              icon: Icon(
+                Icons.search,color: Colors.white,
+              ),
+              onPressed: (){}),
+          new IconButton(
+            icon: Icon(
+              Icons.shopping_cart,color: Colors.white,
+            ),
+            onPressed: (){},)
+        ],
+      ),
+
+      body: Container(
+        child: Products(this.p_name),
+      ),
+    );
+  }
+}
+class Products extends StatefulWidget {
+  final p_name1;
+  var product_list1;
+  Products(this.p_name1)
   {
-    switch(this.item)
+    switch(this.p_name1)
     {
-      case 'fashion':
-        product_list = [
+      case 'Men':
+        product_list1 = [
           {
-            "name": "Men",
+            "name": "T Shirts",
             "picture": "images/Guide-mens-smart-casual-dress-code15@2x.png",
           },
           {
-            "name": "Watches",
-            "picture": "images/watches-111a.png",
-          },
-          {
-            "name": "Jeans",
-            "picture": "images/men-jeans@2x.png",
+            "name": "Blazer",
+            "picture": "images/armani.png",
           },
 
         ];
         break;
-      case 'electronics':
-        product_list = [
+      case 'Watches':
+        product_list1 = [
+          {
+            "name": "Jeans",
+            "picture": "images/men-jeans@2x.png",
+          },
           {
             "name": "Sneakers",
             "picture": "images/16x9.png",
           },
+        ];
+        break;
+      default:
+        product_list1 = [
           {
             "name": "Sun Glasses",
             "picture": "images/pexels-photo-46710.png",
@@ -41,28 +88,28 @@ class products extends StatefulWidget {
     }
   }
   @override
-  _ProductsState createState() => _ProductsState(product_list: this.product_list);
+  _ProductsState createState() => _ProductsState(product_list1);
 }
 
-class _ProductsState extends State<products> {
-  final product_list;
+class _ProductsState extends State<Products> {
+  final list_item;
 
-  _ProductsState({this.product_list});
+  _ProductsState(this.list_item);
+
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-        itemCount: product_list.length,
+        itemCount: list_item.length,
         gridDelegate:
-            new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+        new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemBuilder: (BuildContext context, int index) {
           return Single_prod(
-            prod_name: product_list[index]['name'],
-            prod_pricture: product_list[index]['picture'],
+            prod_name: list_item[index]['name'],
+            prod_pricture: list_item[index]['picture'],
           );
         });
   }
 }
-
 class Single_prod extends StatelessWidget {
   final prod_name;
   final prod_pricture;
@@ -80,7 +127,7 @@ class Single_prod extends StatelessWidget {
           child: Material(
             child: InkWell(
               onTap: () => Navigator.of(context).push(new MaterialPageRoute(
-                  builder: (context) => new ProductDetails(
+                  builder: (context) => new ProductInfo(
                     product_name: prod_name,
                   ))),
               child: GridTile(
@@ -115,3 +162,5 @@ class Single_prod extends StatelessWidget {
     );
   }
 }
+
+

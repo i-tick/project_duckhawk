@@ -8,15 +8,8 @@ import 'package:project_duckhawk/pages/product_details.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 
-
-void main(){
-  runApp(
-
-      MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: HomePage()
-      )
-  );
+void main() {
+  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: HomePage()));
 }
 
 class HomePage extends StatefulWidget {
@@ -27,46 +20,32 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
   Position _currentPosition;
-  String _currentAddress="Tap to update";
-
-
-
-
-
+  String _currentAddress = "Tap to update";
 
   String _value = '';
   void _onClick(String value) => setState(() => _value = value);
 
-
-
-
   @override
   Widget build(BuildContext context) {
-
-    Widget image_carousel=new Container(
-      height:200.0,
-      child:new Carousel(
+    Widget image_carousel = new Container(
+      height: 200.0,
+      child: new Carousel(
         boxFit: BoxFit.cover,
-        images:[
-          AssetImage('images/armani.png')
-
-
-        ],
+        images: [AssetImage('images/armani.png')],
         autoplay: true,
         animationCurve: Curves.fastOutSlowIn,
         animationDuration: Duration(milliseconds: 1000),
       ),
     );
-    Widget image_carousel1=new Container(
-      height:200.00,
-      child:new Carousel(
+    Widget image_carousel1 = new Container(
+      height: 200.00,
+      child: new Carousel(
         boxFit: BoxFit.cover,
-        images:[
+        images: [
           AssetImage('images/armani.png'),
           AssetImage('images/watches-111a.png'),
           AssetImage('images/Guide-mens-smart-casual-dress-code15@2x.png'),
           AssetImage('images/men-jeans@2x.png'),
-
         ],
         autoplay: true,
         animationCurve: Curves.fastOutSlowIn,
@@ -75,64 +54,27 @@ class _HomePageState extends State<HomePage> {
     );
 
     return Scaffold(
-
       appBar: new AppBar(
+            backgroundColor: Color(0xff104670),
+            title: Container(
 
-
-        backgroundColor: Color(0xff104670),
-
-
-
-
-
-        title:Container(
-
-          /*child:
-          new Row(
-            children: <Widget>[
-              new IconButton(icon: new Icon(Icons.place) , onPressed: (){
-                _getCurrentLocation();
-
-
-              },),
-
-             new Text(_currentAddress),
-
-
-            ],
-          ),*/
-          child:
-            Column(children: <Widget>[
-              Row(
+                child: Column(
                 children: <Widget>[
-                  new IconButton(icon: new Icon(Icons.place), onPressed: (){
-                    _getCurrentLocation();
-                  },),
-                  new Text(_currentAddress),
-                ],
-              ),
-              Row(
-                children: <Widget>[
-                  new IconButton(icon: new Icon(Icons.place), onPressed: (){
-                    _getCurrentLocation();
-                  },),
-                  new Text(_currentAddress),
-                ],
-
-              ),
-            ],)
-
-
-
-        ),
-
-
-
-
-
-
-
-      ),
+                  Row(
+                    children:
+                   <Widget>[
+                    new IconButton(
+                      icon: new Icon(Icons.place),
+                      onPressed: () {
+                        _getCurrentLocation();
+                      },
+                    ),
+                    new Text(_currentAddress),
+                  ],
+                ),
+              ],
+            )),
+          ),
       /*
 
 
@@ -163,248 +105,194 @@ class _HomePageState extends State<HomePage> {
         child: Row(
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-
             Expanded(
               flex: 1,
-              child: IconButton(icon: new Icon(Icons.add_shopping_cart), onPressed: () => _onClick('Button1'),),
-
+              child: IconButton(
+                icon: new Icon(Icons.add_shopping_cart),
+                onPressed: () => _onClick('Button1'),
+              ),
             ),
             Expanded(
               flex: 1,
-              child: IconButton(icon: new Icon(Icons.shop), onPressed: () => _onClick('Button2')),
+              child: IconButton(
+                  icon: new Icon(Icons.shop),
+                  onPressed: () => _onClick('Button2')),
             ),
             Expanded(
               flex: 1,
-              child: IconButton(icon: new Icon(Icons.monetization_on), onPressed: () => _onClick('Button3')),
+              child: IconButton(
+                  icon: new Icon(Icons.monetization_on),
+                  onPressed: () => _onClick('Button3')),
             ),
             Expanded(
               flex: 1,
-              child: IconButton(icon: new Icon(Icons.notifications), onPressed: () => _onClick('Button3')),
+              child: IconButton(
+                  icon: new Icon(Icons.notifications),
+                  onPressed: () => _onClick('Button3')),
             ),
             Expanded(
               flex: 1,
-              child: IconButton(icon: new Icon(Icons.share), onPressed: () => _onClick('Button3')),
+              child: IconButton(
+                  icon: new Icon(Icons.share),
+                  onPressed: () => _onClick('Button3')),
             ),
           ],
         ),
       ),
-
-
-
-
-
       endDrawer: new Drawer(
         child: new ListView(
           children: <Widget>[
-            new UserAccountsDrawerHeader(accountName: Text('Ekanta'), accountEmail: null,currentAccountPicture: GestureDetector(
-                child: new CircleAvatar(
-                  backgroundColor: Colors.grey,
-                )
+            new UserAccountsDrawerHeader(
+              accountName: Text('Ekanta'),
+              accountEmail: null,
+              currentAccountPicture: GestureDetector(
+                  child: new CircleAvatar(
+                backgroundColor: Colors.grey,
+              )),
+              decoration: new BoxDecoration(color: Color(0xff104670)),
             ),
-              decoration: new BoxDecoration(
-                  color: Color(0xff104670)
-              ),
-            ),
-
             InkWell(
-              onTap: (){},
+              onTap: () {},
               child: ListTile(
-
                 title: Text('Men'),
               ),
             ),
-
             InkWell(
-              onTap: (){},
-              child: ListTile(
-                  title: Text('Women')
-              ),
+              onTap: () {},
+              child: ListTile(title: Text('Women')),
             ),
-
             InkWell(
-              onTap: (){},
-              child: ListTile(
-                  title: Text('Electronics')
-              ),
+              onTap: () {},
+              child: ListTile(title: Text('Electronics')),
             ),
-
             InkWell(
-              onTap: (){},
-              child: ListTile(
-                  title: Text('Sports')
-              ),
+              onTap: () {},
+              child: ListTile(title: Text('Sports')),
             ),
-
             InkWell(
-              onTap: (){},
-              child: ListTile(
-                  title: Text('Books')
-              ),
+              onTap: () {},
+              child: ListTile(title: Text('Books')),
             ),
-
             InkWell(
-              onTap: (){},
-              child: ListTile(
-                  title: Text('Home & Furniture')
-              ),
+              onTap: () {},
+              child: ListTile(title: Text('Home & Furniture')),
             ),
-
             InkWell(
-              onTap: (){},
-              child: ListTile(
-                  title: Text('Beauty & Personal Care')
-              ),
+              onTap: () {},
+              child: ListTile(title: Text('Beauty & Personal Care')),
             ),
-
             Divider(),
-
             Container(
                 color: Color(0xffaaaaaa),
-
-                child:new Column(
+                child: new Column(
                   children: <Widget>[
                     InkWell(
-                      onTap: (){},
-                      child: ListTile(
-                          title: Text('My Orders')
-                      ),
-                    ),
-
-                    InkWell(
-                      onTap: (){},
-                      child: ListTile(
-                          title: Text('My Cart')
-                      ),
-                    ),
-
-                    InkWell(
-                      onTap: (){},
-                      child: ListTile(
-                          title: Text('Account')
-                      ),
+                      onTap: () {},
+                      child: ListTile(title: Text('My Orders')),
                     ),
                     InkWell(
-                      onTap: (){},
-                      child: ListTile(
-                          title: Text('Notifications')
-                      ),
+                      onTap: () {},
+                      child: ListTile(title: Text('My Cart')),
                     ),
-
                     InkWell(
-                      onTap: (){},
-                      child: ListTile(
-                          title: Text('Budget')
-                      ),
+                      onTap: () {},
+                      child: ListTile(title: Text('Account')),
                     ),
-
                     InkWell(
-                      onTap: (){},
-                      child: ListTile(
-                          title: Text('Share')
-                      ),
+                      onTap: () {},
+                      child: ListTile(title: Text('Notifications')),
                     ),
-
                     InkWell(
-                      onTap: (){},
-                      child: ListTile(
-                          title: Text('Settings')
-                      ),
+                      onTap: () {},
+                      child: ListTile(title: Text('Budget')),
                     ),
-
                     InkWell(
-                      onTap: (){},
-                      child: ListTile(
-                          title: Text('LOGOUT')
-                      ),
+                      onTap: () {},
+                      child: ListTile(title: Text('Share')),
                     ),
-
                     InkWell(
-                      onTap: (){},
-                      child: ListTile(
-                          title: Text('HELP')
-                      ),
+                      onTap: () {},
+                      child: ListTile(title: Text('Settings')),
+                    ),
+                    InkWell(
+                      onTap: () {},
+                      child: ListTile(title: Text('LOGOUT')),
+                    ),
+                    InkWell(
+                      onTap: () {},
+                      child: ListTile(title: Text('HELP')),
                     )
-
                   ],
-                )
-
-            ),
-
-
-
-
-
-
-
-
+                )),
           ],
         ),
       ),
-      body:new ListView(
+      body: new ListView(
         children: <Widget>[
-          new Padding(padding: const EdgeInsets.all(2.0),
-            child: new Text('Categories'),),
+          new Padding(
+            padding: const EdgeInsets.all(2.0),
+          ),
           HorizontalList(),
           new Padding(padding: const EdgeInsets.all(8.0)),
           image_carousel,
           image_carousel1,
-
           Container(
               padding: const EdgeInsets.all(10.0),
               color: Color(0xff104670),
-              child:
-              new Row(
+              child: new Row(
                 children: <Widget>[
-                  new Icon(Icons.arrow_right,color: Colors.white,),
-                  new Text('Fashion',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20
-                  ),),
-                ],
-              )
-          ),
-
-
-          Container(
-            height: 320.0,
-            child: products(),
-          ),
-          Container(
-              padding: const EdgeInsets.all(10.0),
-              color: Color(0xff104670),
-              child:
-              new Row(
-                children: <Widget>[
-                  new Icon(Icons.arrow_right,color: Colors.white,),
-                  new Text('Electronics',
+                  new Icon(
+                    Icons.arrow_right,
+                    color: Colors.white,
+                  ),
+                  new Text(
+                    'Fashion',
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
-                        fontSize: 20
-                    ),),
+                        fontSize: 20),
+                  ),
                 ],
-              )
+              )),
+          Container(
+            height: 120.0,
+            child: products(
+              'fashion',
+            ),
           ),
+          Container(
+              padding: const EdgeInsets.all(10.0),
+              color: Color(0xff104670),
+              child: new Row(
+                children: <Widget>[
+                  new Icon(
+                    Icons.arrow_right,
+                    color: Colors.white,
+                  ),
+                  new Text(
+                    'Electronics',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20),
+                  ),
+                ],
+              )),
 
           /*new Padding(padding: const EdgeInsets.all(20.0),
             child:new Text('Electronics'
-            ) ,),
+            ) ,),*/
 
           Container(
-            height:320.0,
-            child:products(),
-
-          ),*/
+            height: 120.0,
+            child: products('electronics'),
+          ),
         ],
       ),
-
-
     );
-
   }
-  _getCurrentLocation()  {
+
+  _getCurrentLocation() {
     final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
 
     geolocator
@@ -412,15 +300,14 @@ class _HomePageState extends State<HomePage> {
         .then((Position position) {
       setState(() {
         _currentPosition = position;
-
       });
       _getAddressFromLatLng();
     }).catchError((e) {
       print(e);
     });
-
   }
-   _getAddressFromLatLng() async {
+
+  _getAddressFromLatLng() async {
     try {
       List<Placemark> p = await geolocator.placemarkFromCoordinates(
           _currentPosition.latitude, _currentPosition.longitude);
@@ -428,8 +315,7 @@ class _HomePageState extends State<HomePage> {
       Placemark place = p[0];
 
       setState(() {
-        _currentAddress =
-        "${place.locality}";
+        _currentAddress = "${place.locality}";
         print(place.locality);
       });
     } catch (e) {
@@ -437,4 +323,3 @@ class _HomePageState extends State<HomePage> {
     }
   }
 }
-
